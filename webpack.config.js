@@ -1,6 +1,7 @@
 // webpack uses node.js to build applications
 const path = require('path')
 const webpack = require('webpack')
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 // main configuration object. options within tell webpack what to do. (note: webpack v4, config file is not necessary. used for functional specificity reasons)
 module.exports = {
@@ -18,6 +19,11 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
+        }),
+        // analyzes bundle sizes to see how how much js is processed by browser
+        new BundleAnalyzerPlugin({
+            // reports outputs to `report.html` file in `dist`. can be set to `disable` to stop reporting & opening of this file
+            analyzerMode: "static"
         })
     ],
     // - specifies 'development' mode in which webpack runs (webpack runs on 'production' mode by default)
