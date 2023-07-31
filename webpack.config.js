@@ -60,4 +60,8 @@ module.exports = {
   ],
   // - specifies 'development' mode in which webpack runs (webpack runs on 'production' mode by default)
   mode: "development",
+  // - needed for npm run start:dev to load content
+  devServer: {
+    static: "./",
+  },
 };
