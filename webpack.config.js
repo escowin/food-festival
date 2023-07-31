@@ -62,7 +62,7 @@ module.exports = {
     new WebpackPwaManifest({
       name: "Food Event",
       short_name: "Foodies",
-      descrption: "an app that allows you to view upcoming food events",
+      description: "an app that allows you to view upcoming food events",
       start_url: "../index.html",
       background_color: "#01579b",
       theme_color: "#ffffff",
