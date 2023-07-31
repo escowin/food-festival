@@ -3,6 +3,7 @@ const path = require("path");
 const webpack = require("webpack");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const WebpackPwaManifest = require("webpack-pwa-manifest");
 
 // main configuration object. options within tell webpack what to do. (note: webpack v4, config file is not necessary. used for functional specificity reasons)
 module.exports = {
@@ -57,6 +58,24 @@ module.exports = {
       // reports outputs to `report.html` file in `dist`. can be set to `disable` to stop reporting & opening of this file
       analyzerMode: "static",
     }),
+    // writes PWA `manifest.json` into `dist/`
+    new WebpackPwaManifest({
+      name: "Food Event",
+      short_name: "Foodies",
+      descrption: "an app that allows you to view upcoming food events",
+      start_url: "../index.html",
+      background_color: "#01579b",
+      theme_color: "#ffffff",
+      // does not generate unique manifest 
+      fingerprints: false,
+      // manifest link is not added to HTML. path will be hardcoded
+      inject: false,
+      icons: [{
+        src: path.resolve("assets/img/icons/icon-512x512.png"),
+        sizes: [96, 128, 192, 256, 384, 512],
+        destination: path.join("assets", "icons")
+      }]
+    })
   ],
   // - specifies 'development' mode in which webpack runs (webpack runs on 'production' mode by default)
   mode: "development",
