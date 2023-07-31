@@ -61,7 +61,7 @@ module.exports = {
     // writes PWA `manifest.json` into `dist/`
     new WebpackPwaManifest({
       // prevents `auto/` prefix to icons
-      publicPath: "/",
+      publicPath: "./",
       name: "Food Event",
       short_name: "Foodies",
       description: "an app that allows you to view upcoming food events",
